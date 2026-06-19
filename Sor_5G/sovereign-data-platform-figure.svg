@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 800" font-family="'IBM Plex Sans', system-ui, sans-serif" role="img" aria-label="Sovereign Data Platform: the policy data classifier is an expansion of the 5G core's policy control (PCF) and data division (UPF steering). Data sources feed the classifier; sensitive data is routed to a provided AI platform or the customer's own AI; non-sensitive data is eligible for cloud.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0A0E1A"/><stop offset="1" stop-color="#0C1322"/></linearGradient>
+    <linearGradient id="secure" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2BBFAE"/><stop offset="1" stop-color="#46E6D2"/></linearGradient>
+    <marker id="arrowT" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#46E6D2"/></marker>
+    <marker id="arrowA" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#E8A05A"/></marker>
+    <marker id="arrowN" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6E7C96"/></marker>
+    <marker id="arrowC" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#46E6D2"/></marker>
+  </defs>
+  <rect width="1240" height="800" fill="url(#bg)"/>
+
+  <text x="48" y="52" fill="#EAF0F6" font-size="26" font-weight="600" font-family="'Space Grotesk','IBM Plex Sans',sans-serif">Sovereign Data Platform</text>
+  <text x="48" y="78" fill="#8A97AD" font-size="14" font-family="'IBM Plex Mono',monospace">classifier = expansion of core policy control + data division · plug in provided or your own AI</text>
+
+  <!-- perimeter -->
+  <rect x="250" y="112" width="952" height="430" rx="18" fill="none" stroke="#2BBFAE" stroke-opacity="0.5" stroke-width="1.6" stroke-dasharray="7 7"/>
+  <rect x="250" y="112" width="288" height="26" rx="13" fill="#0F1B22" stroke="#2BBFAE" stroke-opacity="0.5" stroke-width="1"/>
+  <text x="266" y="130" fill="#46E6D2" font-size="12.5" font-family="'IBM Plex Mono',monospace" letter-spacing="1">YOUR SOVEREIGN PERIMETER · ON-PREM</text>
+
+  <!-- data sources -->
+  <text x="48" y="170" fill="#8A97AD" font-size="12" font-family="'IBM Plex Mono',monospace" letter-spacing="1">DATA SOURCES</text>
+  <g font-size="12.5" fill="#C7D0DE">
+    <rect x="48" y="186" width="156" height="42" rx="9" fill="#121A2C" stroke="#26324A"/><text x="66" y="212">🏭 Machines / OT</text>
+    <rect x="48" y="240" width="156" height="42" rx="9" fill="#121A2C" stroke="#26324A"/><text x="66" y="266">📟 Sensors / IoT</text>
+    <rect x="48" y="294" width="156" height="42" rx="9" fill="#121A2C" stroke="#26324A"/><text x="66" y="320">🖥 Apps / systems</text>
+    <rect x="48" y="348" width="156" height="42" rx="9" fill="#121A2C" stroke="#26324A"/><text x="66" y="374">💾 Files / records</text>
+  </g>
+  <text x="48" y="402" fill="#6E7C96" font-size="11" font-family="'IBM Plex Mono',monospace">5G · Wi-Fi · wired — access-independent</text>
+
+  <!-- bus into data division -->
+  <path d="M204 207 H230 M204 261 H230 M204 315 H230 M204 369 H230" stroke="#6E7C96" stroke-width="1.6"/>
+  <path d="M230 207 V369" stroke="#6E7C96" stroke-width="1.6"/>
+  <line x1="230" y1="375" x2="304" y2="375" stroke="#6E7C96" stroke-width="2" marker-end="url(#arrowN)"/>
+  <text x="240" y="367" fill="#6E7C96" font-size="11" font-family="'IBM Plex Mono',monospace">data</text>
+
+  <!-- 5G CORE container -->
+  <rect x="286" y="150" width="300" height="312" rx="14" fill="#0D1424" stroke="#2BBFAE" stroke-opacity="0.4"/>
+  <text x="436" y="174" text-anchor="middle" fill="#EAF0F6" font-size="13" font-weight="600">5G Core · open5gsEnt</text>
+  <text x="436" y="190" text-anchor="middle" fill="#46E6D2" font-size="9.5" font-family="'IBM Plex Mono',monospace">YOU OWN — CLASSIFIER IS A CORE EXPANSION</text>
+
+  <!-- Policy Control (extended PCF) -->
+  <rect x="306" y="200" width="260" height="92" rx="11" fill="#10182A" stroke="#2BBFAE" stroke-opacity="0.5"/>
+  <text x="436" y="220" text-anchor="middle" fill="#EAF0F6" font-size="12.5" font-weight="600">Policy Control · extended PCF</text>
+  <g font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="#9FE9DE" text-anchor="middle">
+    <rect x="320" y="230" width="70" height="18" rx="5" fill="#11261F" stroke="#2BBFAE" stroke-opacity="0.4"/><text x="355" y="243">S-NSSAI</text>
+    <rect x="396" y="230" width="74" height="18" rx="5" fill="#11261F" stroke="#2BBFAE" stroke-opacity="0.4"/><text x="433" y="243">DNN/APN</text>
+    <rect x="476" y="230" width="78" height="18" rx="5" fill="#11261F" stroke="#2BBFAE" stroke-opacity="0.4"/><text x="515" y="243">UE-GROUP</text>
+    <rect x="358" y="252" width="60" height="18" rx="5" fill="#11261F" stroke="#2BBFAE" stroke-opacity="0.4"/><text x="388" y="265">APP-ID</text>
+    <rect x="424" y="252" width="72" height="18" rx="5" fill="#11261F" stroke="#2BBFAE" stroke-opacity="0.4"/><text x="460" y="265">DATA-CLASS</text>
+  </g>
+  <text x="436" y="284" text-anchor="middle" fill="#8A97AD" font-size="9.5" font-family="'IBM Plex Mono',monospace">data-class policy (metadata)</text>
+
+  <!-- PCC/PDR arrow -->
+  <line x1="436" y1="292" x2="436" y2="320" stroke="#46E6D2" stroke-width="2" marker-end="url(#arrowC)"/>
+  <text x="446" y="310" fill="#46E6D2" font-size="9.5" font-family="'IBM Plex Mono',monospace">PCC / PDR</text>
+
+  <!-- Data Division (UPF steering) -->
+  <rect x="306" y="322" width="260" height="118" rx="11" fill="#10182A" stroke="#2BBFAE" stroke-opacity="0.5"/>
+  <text x="436" y="342" text-anchor="middle" fill="#EAF0F6" font-size="12.5" font-weight="600">Data Division · UPF steering</text>
+  <text x="436" y="360" text-anchor="middle" fill="#9FE9DE" font-size="10" font-family="'IBM Plex Mono',monospace">PDR / FAR · UL CL breakout</text>
+  <g transform="translate(421,372)">
+    <rect x="0" y="6" width="28" height="20" rx="4" fill="#0C1322" stroke="#46E6D2" stroke-width="1.4"/>
+    <path d="M6 6 v-3 a8 8 0 0 1 16 0 v3" fill="none" stroke="#46E6D2" stroke-width="1.4"/>
+    <circle cx="14" cy="16" r="2.4" fill="#46E6D2"/>
+  </g>
+  <text x="436" y="420" text-anchor="middle" fill="#8A97AD" font-size="9.5" font-family="'IBM Plex Mono',monospace">payload never opened</text>
+
+  <!-- classifier bracket caption -->
+  <text x="286" y="484" fill="#46E6D2" font-size="11" font-family="'IBM Plex Mono',monospace">Policy Data Classifier = policy control ⊕ data division (expanded)</text>
+
+  <!-- router -->
+  <path d="M650 346 l36 28 l-36 28 l-36 -28 z" fill="#10182A" stroke="#2BBFAE" stroke-opacity="0.5"/>
+  <text x="650" y="370" text-anchor="middle" fill="#EAF0F6" font-size="9.5" font-weight="600">DATA</text>
+  <text x="650" y="382" text-anchor="middle" fill="#EAF0F6" font-size="9.5" font-weight="600">ROUTER</text>
+  <line x1="566" y1="374" x2="610" y2="374" stroke="#6E7C96" stroke-width="2" marker-end="url(#arrowN)"/>
+
+  <!-- LOCAL AI container -->
+  <rect x="722" y="158" width="458" height="248" rx="14" fill="#0F2622" stroke="#2BBFAE" stroke-opacity="0.7"/>
+  <rect x="716" y="262" width="10" height="24" rx="3" fill="#0A0E1A" stroke="#46E6D2" stroke-width="1.3"/>
+  <text x="951" y="182" text-anchor="middle" fill="#EAF0F6" font-size="13" font-weight="600">Local AI · inside perimeter</text>
+  <text x="951" y="199" text-anchor="middle" fill="#46E6D2" font-size="10" font-family="'IBM Plex Mono',monospace">ONE ROUTING API · TWO TARGETS · SENSITIVE STAYS LOCAL</text>
+
+  <!-- option A: provided -->
+  <rect x="744" y="212" width="414" height="80" rx="10" fill="#123028" stroke="#46E6D2" stroke-opacity="0.6"/>
+  <rect x="744" y="212" width="120" height="80" rx="10" fill="#163a30" stroke="none"/>
+  <text x="760" y="238" fill="#46E6D2" font-size="10" font-family="'IBM Plex Mono',monospace">FIRST-PARTY</text>
+  <text x="760" y="258" fill="#EAF0F6" font-size="13" font-weight="600">AI Platform</text>
+  <text x="760" y="276" fill="#EAF0F6" font-size="13" font-weight="600">— provided by us</text>
+  <text x="884" y="244" fill="#9FE9DE" font-size="11">Managed on-prem inference, operated by us.</text>
+  <text x="884" y="264" fill="#9FE9DE" font-size="11">Curated sovereign / open-weight models</text>
+  <text x="884" y="280" fill="#8A97AD" font-size="10.5" font-family="'IBM Plex Mono',monospace">EXAONE · HyperCLOVA X · open-weight</text>
+
+  <!-- option B: your own -->
+  <rect x="744" y="300" width="414" height="80" rx="10" fill="#10182A" stroke="#2BBFAE" stroke-opacity="0.5"/>
+  <rect x="744" y="300" width="120" height="80" rx="10" fill="#16223a" stroke="none"/>
+  <text x="760" y="326" fill="#E8A05A" font-size="10" font-family="'IBM Plex Mono',monospace">BRING YOUR OWN</text>
+  <text x="760" y="346" fill="#EAF0F6" font-size="13" font-weight="600">Your own AI</text>
+  <text x="760" y="364" fill="#EAF0F6" font-size="13" font-weight="600">— self-operated</text>
+  <text x="884" y="332" fill="#C7D0DE" font-size="11">Connect the internal LLM / AI you already run.</text>
+  <text x="884" y="352" fill="#C7D0DE" font-size="11">No model lock-in; keep your investment.</text>
+  <text x="884" y="368" fill="#8A97AD" font-size="10.5" font-family="'IBM Plex Mono',monospace">REST / gRPC · model endpoints · RAG</text>
+
+  <!-- API path router -> socket, then split to A and B -->
+  <path d="M686 360 C 700 320, 700 280, 714 274" fill="none" stroke="url(#secure)" stroke-width="2.6"/>
+  <g transform="translate(708,268)"><rect x="0" y="0" width="11" height="12" rx="2" fill="#46E6D2"/><rect x="-5" y="2" width="5" height="3" fill="#46E6D2"/><rect x="-5" y="7" width="5" height="3" fill="#46E6D2"/></g>
+  <text x="690" y="318" fill="#46E6D2" font-size="9.5" font-family="'IBM Plex Mono',monospace">API</text>
+  <path d="M726 274 C 734 252, 736 252, 744 252" fill="none" stroke="#46E6D2" stroke-width="1.8" marker-end="url(#arrowC)"/>
+  <path d="M726 274 C 734 320, 736 340, 744 340" fill="none" stroke="#46E6D2" stroke-width="1.8" marker-end="url(#arrowC)"/>
+
+  <!-- cloud (outside) -->
+  <rect x="980" y="636" width="190" height="92" rx="12" fill="#241B10" stroke="#E8A05A" stroke-opacity="0.6"/>
+  <text x="1075" y="664" text-anchor="middle" fill="#EAF0F6" font-size="13.5" font-weight="600">Cloud AI</text>
+  <text x="1075" y="686" text-anchor="middle" fill="#E8A05A" font-size="11" font-family="'IBM Plex Mono',monospace">NON-SENSITIVE · ELIGIBLE</text>
+  <text x="1075" y="710" text-anchor="middle" fill="#D9B894" font-size="11">optional, by policy</text>
+  <path d="M664 392 C 800 470, 900 580, 980 672" fill="none" stroke="#E8A05A" stroke-width="2.6" marker-end="url(#arrowA)"/>
+  <text x="876" y="506" fill="#E8A05A" font-size="10.5" font-family="'IBM Plex Mono',monospace" transform="rotate(60 876 506)" opacity="0.85">crosses boundary →</text>
+
+  <text x="48" y="762" fill="#6E7C96" font-size="11.5" font-family="'IBM Plex Mono',monospace">policy control: extended PCF   ·   data division: UPF steering (PCC/PDR, UL CL)   ·   analytics: NWDAF / NEF   ·   no AI inside core NFs</text>
+</svg>

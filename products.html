@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Products — NextEPC</title>
+<meta name="description" content="NextEPC products: Sovereign Data Platform, Sovereign 5G Edge AI, plus the proven 5G Core Enterprise Edition, LTE/EPC core, and AccUPF." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<script>document.documentElement.className+=' js';</script>
+<link rel="stylesheet" href="site.css" />
+<style>
+  /* products-page specifics */
+  .prod-detail{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:40px}
+  .prod-detail .col{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+  .prod-detail .col.lead{border-top:3px solid var(--teal)}
+  .ai-targets{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+  .target{border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px;background:var(--surface-2)}
+  .target.first{border-color:var(--teal-line);background:var(--teal-soft)}
+  .target .tt{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
+  .target.first .tt{color:var(--teal-deep)}
+  .target.own .tt{color:#8A5A12}
+  .target .th{font-family:var(--font-head);font-weight:600;font-size:15px;color:var(--ink);margin:8px 0 4px}
+  .target p{font-size:13px;color:var(--muted)}
+  .modules{display:grid;grid-template-columns:1fr;gap:12px;margin-top:18px}
+  .module{border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px 18px;background:var(--surface-2)}
+  .module .mh{display:flex;align-items:center;gap:10px}
+  .module .mn{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-deep)}
+  .module h4{font-size:16px;margin:0}
+  .module p{font-size:13.5px;color:var(--muted);margin-top:7px}
+  .anchor{scroll-margin-top:90px}
+  @media (max-width:920px){ .prod-detail{grid-template-columns:1fr} .ai-targets{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img class="brand-logo" src="nextepc-logo.png" alt="NextEPC logo" /><span class="wm">NextEPC</span></a>
+    <ul class="nav-links">
+      <li><a href="products.html" class="active">Products</a></li>
+      <li><a href="index.html#solutions">Solutions</a></li>
+      <li><a href="index.html#news">Technology &amp; News</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#partners">Partners</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="index.html">Home</a>
+      <a class="btn btn-primary btn-sm" href="#contact">Contact us <span class="arr">→</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Products</p>
+    <h1>The open core, now with sovereign AI.</h1>
+    <p class="lede">Three products on one sovereign platform — the open 4G/5G core you run yourself, plus two AI
+      products that bring inference inside your perimeter, on the same NextEPC core that has powered private networks
+      since 2017.</p>
+    <div class="tagstrip" style="margin-top:28px">
+      <a class="chip" href="#nextepc-5g-core">NextEPC 5G Core</a>
+      <a class="chip" href="#sovereign-data-platform">Sovereign Data Platform</a>
+      <a class="chip" href="#sovereign-5g-edge-ai">Sovereign 5G Edge AI</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PRODUCT 1: NEXTEPC 5G CORE ============ -->
+<section class="anchor" id="nextepc-5g-core">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Product 01 · Foundation &nbsp;·&nbsp; <span class="badge" style="vertical-align:middle">Since 2017</span></p>
+      <h2>NextEPC 5G Core</h2>
+      <p class="sub">Build your own 5G and LTE networks. The open, self-operated 4G/5G core NextEPC has shipped since
+        2017 — now Enterprise Edition. You control every network function on commodity hardware, deploy on-prem or
+        air-gapped, and run it as the foundation every NextEPC AI product builds on.</p>
+    </div>
+
+    <div class="mini-grid">
+      <div class="mcard">
+        <div class="ic">◆</div>
+        <h4>5G Core — Enterprise Edition</h4>
+        <p>The full 3GPP 5G standalone core with advance features, commercial support, consulting and deployment —
+          scale a private network from trial to commercial level.</p>
+        <span class="tag">SA core · slicing · advance features</span>
+      </div>
+      <div class="mcard">
+        <div class="ic">▤</div>
+        <h4>LTE / EPC Core</h4>
+        <p>MME, SGW, PGW, HSS and PCRF — the open Evolved Packet Core NextEPC has shipped since 2017, supporting 3GPP
+          Release 13 and CBRS community networks.</p>
+        <span class="tag">4G EPC · CBRS-ready</span>
+      </div>
+      <div class="mcard">
+        <div class="ic">⛁</div>
+        <h4>AccUPF</h4>
+        <p>An accelerated user-plane function powered by DPDK for terabit-class local breakout and low-latency edge
+          traffic. Released v1.6 in September 2023.</p>
+        <span class="tag">DPDK · terabit · v1.6</span>
+      </div>
+    </div>
+
+    <div class="prod-detail" style="grid-template-columns:1fr;margin-top:26px">
+      <div class="col" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
+        <div style="max-width:62ch">
+          <span class="badge">Open source</span>
+          <h3 style="font-size:22px;margin:14px 0 8px">Open5GS — the official trial of the NextEPC 5G core</h3>
+          <p style="font-size:15px;color:var(--muted)">Build and test a full 5G/LTE core for free. Since 2017, NextEPC has
+            been dedicated to open cellular networking — contact us for the Enterprise Edition with advance features and
+            commercial support.</p>
+        </div>
+        <div class="cta-row"><a class="btn btn-ghost" href="#">Get the trial <span class="arr">→</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT 2: SOVEREIGN DATA PLATFORM ============ -->
+<section class="bg-alt anchor" id="sovereign-data-platform">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Product 02 · Data AI &nbsp;·&nbsp; <span class="badge new" style="vertical-align:middle">New</span></p>
+      <h2>Sovereign Data Platform</h2>
+      <p class="sub">Govern your data. Keep your packets sealed. A data-centric platform built on the 5G core you already
+        own — its classifier is an expansion of the core's own policy control and data-division functions. It sorts
+        every flow by policy, never by reading the payload, and routes sensitive data to AI inside your perimeter:
+        ours or your own. Everything else can reach the cloud. Same behavior over 5G, Wi-Fi, or wired.</p>
+    </div>
+
+    <div class="prod-detail">
+      <div class="col lead">
+        <p class="sub" style="margin-top:0">Platform features</p>
+        <ul class="flist">
+          <li><b>Classifier = core expansion</b><span>Policy control (extended PCF) authors data-class policy; data division (UPF steering) enforces it as PCC/PDR rules. Not a bolt-on box.</span></li>
+          <li><b>Classified by policy, never by payload</b><span>Decisions use slice (S-NSSAI), DNN/APN, UE group and application ID — the contents of your data are never opened.</span></li>
+          <li><b>Tunable, versioned policy</b><span>Refine data-class rules per site, slice or group; tighten residency without touching the access network.</span></li>
+          <li><b>Access-independent</b><span>Governs data the same way over 5G, Wi-Fi or wired — no dependency on a specific radio.</span></li>
+          <li><b>Compliance evidence by design</b><span>Routing and inference access are logged as a by-product — usable for EU AI Act, HIPAA and data-residency review.</span></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <p class="sub" style="margin-top:0">Run AI your way</p>
+        <p style="font-size:14.5px;color:var(--body)">Two ways to run inference behind the boundary, both reached through
+          the same routing API — start with ours and move to yours, or mix them by data class.</p>
+        <div class="ai-targets">
+          <div class="target first">
+            <div class="tt">First-party · provided by us</div>
+            <div class="th">Managed AI Platform</div>
+            <p>On-prem inference we package, deploy and maintain. Curated sovereign or open-weight models, operated inside your perimeter.</p>
+          </div>
+          <div class="target own">
+            <div class="tt">Bring your own · self-operated</div>
+            <div class="th">Your own AI</div>
+            <p>Connect the internal LLM / AI you already run over open REST / gRPC APIs. No model lock-in, no rip-and-replace.</p>
+          </div>
+        </div>
+        <p class="sub">Use cases</p>
+        <ul class="uses">
+          <li>Manufacturing &amp; fabs — CV quality and OT stay on the line; anonymized KPIs to cloud</li>
+          <li>Healthcare — PHI and imaging on local AI; scheduling can use cloud</li>
+          <li>Finance &amp; insurance — transaction and customer inference stays in-region</li>
+          <li>Defense &amp; public sector — controlled data rule-blocked from the perimeter</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT 3: SOVEREIGN 5G EDGE AI ============ -->
+<section class="anchor" id="sovereign-5g-edge-ai">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Product 03 · Edge AI &nbsp;·&nbsp; <span class="badge new" style="vertical-align:middle">New</span></p>
+      <h2>Sovereign 5G Edge AI</h2>
+      <p class="sub">Own the core. Keep the data inside. A private 5G core you control end to end, with AI that runs inside
+        your perimeter — connectivity, operations intelligence and camera analytics all on your premises. The core
+        routes streams but never inspects them; raw video and subscriber data stay inside, and only policy-approved
+        metadata ever leaves.</p>
+    </div>
+
+    <div class="modules">
+      <div class="module">
+        <div class="mh"><span class="mn">Module · Foundation</span></div>
+        <h4>Sovereign 5G Core</h4>
+        <p>A converged private 4G/5G core on a hardened open-source foundation you run and control end to end. Full
+          control of every network function, runs on-prem or fully air-gapped, accelerated user plane with local
+          breakout, per-tenant slicing — you hold the keys and the subscriber identities.</p>
+      </div>
+      <div class="module">
+        <div class="mh"><span class="mn">Module · Operations</span></div>
+        <h4>NetOps AI</h4>
+        <p>An AI operations assistant that lives inside your core. Root-cause analysis grounded in your own logs, traces
+          and metrics — every answer cited against the exact 3GPP procedure, never guessed. Generates and validates core
+          config; closed-loop automation with human approval, staged rollout and automatic rollback. Air-gap capable.</p>
+      </div>
+      <div class="module">
+        <div class="mh"><span class="mn">Module · Vision</span></div>
+        <h4>Sovereign Edge Vision</h4>
+        <p>Camera intelligence — person, intrusion and zone-violation detection — processed at the on-site edge over your
+          private 5G. Natural-language alerts and footage search ("person in a restricted zone after hours"). Video is
+          steered to the edge, never backhauled; the core routes streams but never sees their contents.</p>
+      </div>
+      <div class="module">
+        <div class="mh"><span class="mn">Module · Governance</span></div>
+        <h4>Policy-Driven AI Gateway</h4>
+        <p>A control point that decides where every AI request runs — on-prem or cloud — by how sensitive the data is.
+          Metadata-driven steering that works on encrypted traffic, central policy with a full audit trail, and a single
+          egress gate you control: the only door out of the sovereign boundary.</p>
+      </div>
+    </div>
+
+    <div class="prod-detail" style="margin-top:26px">
+      <div class="col">
+        <p class="sub" style="margin-top:0">Why full control of the core</p>
+        <ul class="flist">
+          <li><b>No black box in the path</b><span>You see and govern every network function — no opaque vendor in your control or data plane.</span></li>
+          <li><b>Processed at the edge</b><span>Operations AI, analytics and video are handled on-site, inside your boundary.</span></li>
+          <li><b>Runs fully disconnected</b><span>The entire stack — core, inference, vision — operates offline for your most sensitive sites.</span></li>
+          <li><b>One controlled door out</b><span>A single policy gate governs the perimeter; only approved metadata crosses it.</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <p class="sub" style="margin-top:0">Use cases</p>
+        <ul class="uses">
+          <li>Semiconductor fabs and production lines that can't export process data</li>
+          <li>Hospitals operating under strict patient-data regulation</li>
+          <li>Defense and government sites that need a self-contained network</li>
+          <li>Perimeter and after-hours intrusion monitoring across multi-building campuses</li>
+          <li>Integrators running many sites from one console under one perimeter policy</li>
+        </ul>
+        <div class="cta-row" style="margin-top:24px"><a class="btn btn-primary" href="#contact">Become a design partner <span class="arr">→</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>Run AI where your data has to stay.</h2>
+      <p>A 5G core you control, a classifier that extends its own policy and data-division functions, and AI inside your
+        perimeter — ours or your own. Let's scope your site.</p>
+      <div class="cta-row">
+        <a class="btn btn-ondark" href="#">Request a briefing <span class="arr">→</span></a>
+        <a class="btn btn-ghost-dark" href="index.html">Back to home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><img class="brand-logo" src="nextepc-logo.png" alt="NextEPC logo" /><span class="wm">NextEPC</span></a>
+        <p>Sovereign 5G and on-prem AI. Build your own 4G/5G networks — and keep the intelligence inside.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Products</h5>
+        <a href="#nextepc-5g-core">NextEPC 5G Core</a>
+        <a href="#sovereign-data-platform">Sovereign Data Platform</a>
+        <a href="#sovereign-5g-edge-ai">Sovereign 5G Edge AI</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="index.html#about">About us</a>
+        <a href="index.html#partners">Partners</a>
+        <a href="index.html#news">Technology &amp; News</a>
+        <a href="#contact">Contact us</a>
+      </div>
+      <div class="foot-col">
+        <h5>Open source</h5>
+        <a href="#">Open5GS trial</a>
+        <a href="#">Documentation</a>
+        <a href="#">GitHub</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 NextEPC Inc. — All rights reserved.</span>
+      <span>Sovereign by architecture · classified by policy, never by payload</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  window.addEventListener('load', () => setTimeout(() => document.querySelectorAll('.reveal').forEach(el => el.classList.add('in')), 500));
+</script>
+
+</body>
+</html>

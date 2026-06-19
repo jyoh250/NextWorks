@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sovereign Data Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0E1A; --ink2:#0C1322; --panel:#10182A; --panel2:#121A2C;
+    --line:#26324A; --line2:#1B2438;
+    --text:#EAF0F6; --muted:#8A97AD; --dim:#6E7C96;
+    --secure:#46E6D2; --secure-dim:#2BBFAE; --secure-bg:#0F2622;
+    --cloud:#E8A05A; --cloud-bg:#241B10;
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:radial-gradient(1200px 600px at 78% -8%, rgba(43,191,174,.10), transparent 60%), var(--ink);
+    color:var(--text); font-family:'IBM Plex Sans',system-ui,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+  a{color:var(--secure); text-decoration:none}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--secure-dim)}
+
+  header.top{border-bottom:1px solid var(--line2)}
+  .topbar{display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:var(--maxw); margin:0 auto}
+  .brand{font-family:'IBM Plex Mono',monospace; font-size:14px; color:var(--muted)}
+  .brand b{color:var(--text); font-weight:500}
+  .pill{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--secure); border:1px solid rgba(43,191,174,.4); padding:5px 10px; border-radius:20px}
+
+  .hero{padding:88px 0 56px}
+  .hero h1{font-family:'Space Grotesk',sans-serif; font-weight:600; letter-spacing:-.01em; font-size:clamp(40px,6vw,72px); line-height:1.02; margin:18px 0 0}
+  .hero h1 .accent{color:var(--secure)}
+  .hero .lede{font-size:clamp(17px,2.2vw,21px); color:var(--muted); max-width:700px; margin:24px 0 0}
+  .hero .lede strong{color:var(--text); font-weight:600}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap; margin-top:34px}
+  .btn{font-family:'IBM Plex Mono',monospace; font-size:13px; padding:12px 20px; border-radius:8px; border:1px solid var(--secure-dim); color:var(--ink); background:var(--secure); font-weight:500}
+  .btn.ghost{background:transparent; color:var(--text); border-color:var(--line)}
+
+  .claims{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line2); border:1px solid var(--line2); border-radius:14px; overflow:hidden; margin-top:56px}
+  .claim{background:var(--ink2); padding:22px}
+  .claim .k{font-family:'IBM Plex Mono',monospace; color:var(--secure); font-size:12px; letter-spacing:.5px}
+  .claim .v{margin-top:8px; color:var(--muted); font-size:14.5px}
+
+  section{padding:64px 0}
+  .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:8px}
+  .sec-num{font-family:'IBM Plex Mono',monospace; color:var(--secure-dim); font-size:13px}
+  h2{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:clamp(26px,3.4vw,38px); letter-spacing:-.01em; margin:0}
+  .sec-sub{color:var(--muted); max-width:720px; margin:14px 0 0; font-size:16.5px}
+
+  .figure-panel{margin-top:36px; border:1px solid var(--line2); border-radius:16px; overflow:hidden; background:var(--ink2)}
+  .figure-panel svg{display:block; width:100%; height:auto}
+  .figure-cap{display:flex; gap:22px; flex-wrap:wrap; padding:16px 20px; border-top:1px solid var(--line2); font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--muted)}
+  .dot{display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:7px; vertical-align:middle}
+  .dot.s{background:var(--secure)} .dot.c{background:var(--cloud)}
+
+  .how{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:36px}
+  .step{border:1px solid var(--line2); border-radius:14px; padding:22px; background:var(--panel)}
+  .step .n{font-family:'IBM Plex Mono',monospace; color:var(--secure-dim); font-size:13px}
+  .step h4{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:17px; margin:12px 0 8px}
+  .step p{margin:0; color:var(--muted); font-size:14px}
+
+  .ai2{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:36px}
+  .aicard{border:1px solid var(--line2); border-radius:16px; padding:26px; background:var(--panel)}
+  .aicard.first{border-color:rgba(70,230,210,.5); background:linear-gradient(180deg,#0F2622,var(--ink2))}
+  .aicard .tag{font-family:'IBM Plex Mono',monospace; font-size:11px; padding:4px 9px; border-radius:6px; display:inline-block}
+  .aicard.first .tag{color:var(--secure); border:1px solid rgba(70,230,210,.5)}
+  .aicard.own .tag{color:var(--cloud); border:1px solid rgba(232,160,90,.45)}
+  .aicard h3{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:20px; margin:14px 0 6px}
+  .aicard p{color:var(--muted); margin:0 0 16px; font-size:14.5px}
+  ul.mini{list-style:none; padding:0; margin:0}
+  ul.mini li{position:relative; padding:0 0 11px 24px; font-size:14px}
+  ul.mini li::before{content:"⮕"; position:absolute; left:0; top:0; color:var(--secure)}
+  .codecard{margin-top:18px; background:#0A0E1A; border:1px solid var(--line2); border-radius:12px; padding:18px 20px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#9FE9DE; line-height:1.7; overflow:auto}
+  .codecard .c{color:var(--dim)} .codecard .k{color:#E8A05A}
+
+  .feat-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:36px}
+  .feat-col{border:1px solid var(--line2); border-radius:16px; padding:26px 26px 10px; background:var(--panel)}
+  .feat-col h3{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 4px; display:flex; align-items:center; gap:10px}
+  .feat-col h3 .tag{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--secure); border:1px solid rgba(43,191,174,.35); border-radius:6px; padding:3px 7px; font-weight:400}
+  ul.feat{list-style:none; padding:0; margin:18px 0 16px}
+  ul.feat li{position:relative; padding:0 0 16px 26px; color:var(--text); font-size:15px}
+  ul.feat li::before{content:""; position:absolute; left:2px; top:9px; width:8px; height:8px; border-radius:2px; background:var(--secure); box-shadow:0 0 0 4px rgba(70,230,210,.12)}
+  ul.feat li b{font-weight:600}
+  ul.feat li span{display:block; color:var(--muted); font-size:13.5px; margin-top:3px}
+
+  .uc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:36px}
+  .uc{border:1px solid var(--line2); border-radius:16px; padding:24px; background:var(--panel); display:flex; flex-direction:column; min-height:230px}
+  .uc .ico{font-size:24px; width:46px; height:46px; display:grid; place-items:center; border-radius:11px; background:var(--secure-bg); border:1px solid rgba(43,191,174,.35)}
+  .uc h4{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:16px 0 6px}
+  .uc p{margin:0; color:var(--muted); font-size:14px}
+  .uc .split{margin-top:auto; padding-top:16px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; display:flex; flex-direction:column; gap:5px}
+  .uc .split .keep{color:var(--secure)}
+  .uc .split .out{color:var(--cloud)}
+
+  .close{border:1px solid var(--line2); border-radius:18px; padding:44px; background:linear-gradient(180deg, var(--panel), var(--ink2)); text-align:center; margin-top:20px}
+  .close h2{margin-bottom:14px}
+  .close p{color:var(--muted); max-width:580px; margin:0 auto 26px}
+
+  footer{border-top:1px solid var(--line2); padding:30px 0; color:var(--dim); font-size:13px; font-family:'IBM Plex Mono',monospace}
+
+  @media(max-width:880px){
+    .claims{grid-template-columns:1fr}
+    .how{grid-template-columns:1fr 1fr}
+    .ai2{grid-template-columns:1fr}
+    .feat-grid{grid-template-columns:1fr}
+    .uc-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:560px){ .how{grid-template-columns:1fr} }
+  @media(prefers-reduced-motion:reduce){ *{animation:none !important} html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="topbar">
+    <div class="brand"><b>open5gsEnt</b>&nbsp;/ platform</div>
+    <div class="pill">SOVEREIGN DATA PLATFORM</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow">Data-centric · access-independent · sovereign AI</div>
+    <h1>Govern your data.<br><span class="accent">Keep your packets sealed.</span></h1>
+    <p class="lede">A data-centric platform built on the 5G core you already own. The classifier is an
+      <strong>expansion of the core's own policy control and data-division functions</strong> — it sorts every
+      flow by policy, never by reading the payload, and routes sensitive data to AI inside your perimeter:
+      <strong>ours or your own</strong>. Everything else can reach the cloud. Same behavior over 5G, Wi-Fi, or wired.</p>
+    <div class="cta-row">
+      <a class="btn" href="#contact">Request a briefing</a>
+      <a class="btn ghost" href="#architecture">See the architecture</a>
+    </div>
+
+    <div class="claims">
+      <div class="claim"><div class="k">No payload disclosure</div><div class="v">Classification reads slice, DNN/APN, UE group and application ID — not the contents of your data.</div></div>
+      <div class="claim"><div class="k">A core expansion</div><div class="v">The classifier extends the core's policy control (PCF) and data division (UPF steering) — not a bolt-on box.</div></div>
+      <div class="claim"><div class="k">Provided or your own AI</div><div class="v">Run our managed on-prem AI platform, or connect the AI you already operate. Same routing, your choice.</div></div>
+    </div>
+  </section>
+
+  <section id="architecture">
+    <div class="sec-head"><span class="sec-num">01</span><h2>How it works</h2></div>
+    <p class="sec-sub">Data sources connect into the classifier — which is the core's <b>policy control</b> (an
+      extended PCF that authors data-class policy) coupled with <b>data division</b> (UPF steering that splits
+      flows by PCC/PDR rules). Sensitive classes break out to AI inside your perimeter; the rest pass to cloud.
+      No AI sits inside the core network functions.</p>
+
+    <div class="figure-panel">
+      <svg viewBox="0 0 1240 800" role="img" aria-label="Sovereign Data Platform: the policy data classifier is an expansion of the 5G core's policy control (PCF) and data division (UPF steering). Sensitive data routes to a provided AI platform or the customer's own AI; non-sensitive data eligible for cloud.">
+        <defs>
+          <linearGradient id="secure" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2BBFAE"/><stop offset="1" stop-color="#46E6D2"/></linearGradient>
+          <marker id="arrowT" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#46E6D2"/></marker>
+          <marker id="arrowA" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#E8A05A"/></marker>
+          <marker id="arrowN" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6E7C96"/></marker>
+          <marker id="arrowC" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#46E6D2"/></marker>
+        </defs>
+        <rect width="1240" height="800" fill="#0C1322"/>
+        <text x="48" y="52" fill="#EAF0F6" font-size="26" font-weight="600" font-family="'Space Grotesk','IBM Plex Sans',sans-serif">Sovereign Data Platform</text>
+        <text x="48" y="78" fill="#8A97AD" font-size="14" font-family="'IBM Plex Mono',monospace">classifier = expansion of core policy control + data division · plug in provided or your own AI</text>
+
+        <rect x="250" y="112" width="952" height="430" rx="18" fill="none" stroke="#2BBFAE" stroke-opacity="0.5" stroke-width="1.6" stroke-dasharray="7 7"/>
+        <rect x="250" y="112" width="288" height="26" rx="13" fill="#0F1B22" stroke="#2BBFAE" stroke-opacity="0.5" stroke-width="1"/>
+        <text x="266" y="130" fill="#46E6D2" font-size="12.5" font-family="'IBM Plex Mono',monospace" letter-spacing="1">YOUR SOVEREIGN PERIMETER · ON-PREM</text>
+
+        <text x="48" y="170" fill="#8A97AD" font-size="12" font-family="'IBM Plex Mono',monospace" letter-spacing="1">DATA SOURCES</text>
+        <g font-size="12.5" fill="#C7D0DE" font-family="'IBM Plex Sans',sans-serif">
+          <rect x="48" y="186" width="156" height="42" rx="9" fill="#121A2C" stroke="#26324A"/><text x="66" y="212">🏭 Machines / OT</text>
+          <rect x="48" y="240" width="156" height="42" rx="9" fill="#121A2C" stroke="#26324A"/><text x="66" y="266">📟 Sensors / IoT</text>
+          <rect x="48" y="294" width="156" height="42" rx="9" fill="#121A2C" stroke="#26324A"/><text x="66" y="320">🖥 Apps / systems</text>
+          <rect x="48" y="348" width="156" height="42" rx="9" fill="#121A2C" stroke="#26324A"/><text x="66" y="374">💾 Files / records</text>
+        </g>
+        <text x="48" y="402" fill="#6E7C96" font-size="11" font-family="'IBM Plex Mono',monospace">5G · Wi-Fi · wired — access-independent</text>
+
+        <path d="M204 207 H230 M204 261 H230 M204 315 H230 M204 369 H230" stroke="#6E7C96" stroke-width="1.6"/>
+        <path d="M230 207 V369" stroke="#6E7C96" stroke-width="1.6"/>
+        <line x1="230" y1="375" x2="304" y2="375" stroke="#6E7C96" stroke-width="2" marker-end="url(#arrowN)"/>
+        <text x="240" y="367" fill="#6E7C96" font-size="11" font-family="'IBM Plex Mono',monospace">data</text>
+
+        <g font-family="'IBM Plex Sans',sans-serif">
+          <rect x="286" y="150" width="300" height="312" rx="14" fill="#0D1424" stroke="#2BBFAE" stroke-opacity="0.4"/>
+          <text x="436" y="174" text-anchor="middle" fill="#EAF0F6" font-size="13" font-weight="600">5G Core · open5gsEnt</text>
+          <text x="436" y="190" text-anchor="middle" fill="#46E6D2" font-size="9.5" font-family="'IBM Plex Mono',monospace">YOU OWN — CLASSIFIER IS A CORE EXPANSION</text>
+
+          <rect x="306" y="200" width="260" height="92" rx="11" fill="#10182A" stroke="#2BBFAE" stroke-opacity="0.5"/>
+          <text x="436" y="220" text-anchor="middle" fill="#EAF0F6" font-size="12.5" font-weight="600">Policy Control · extended PCF</text>
+          <g font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="#9FE9DE" text-anchor="middle">
+            <rect x="320" y="230" width="70" height="18" rx="5" fill="#11261F" stroke="#2BBFAE" stroke-opacity="0.4"/><text x="355" y="243">S-NSSAI</text>
+            <rect x="396" y="230" width="74" height="18" rx="5" fill="#11261F" stroke="#2BBFAE" stroke-opacity="0.4"/><text x="433" y="243">DNN/APN</text>
+            <rect x="476" y="230" width="78" height="18" rx="5" fill="#11261F" stroke="#2BBFAE" stroke-opacity="0.4"/><text x="515" y="243">UE-GROUP</text>
+            <rect x="358" y="252" width="60" height="18" rx="5" fill="#11261F" stroke="#2BBFAE" stroke-opacity="0.4"/><text x="388" y="265">APP-ID</text>
+            <rect x="424" y="252" width="72" height="18" rx="5" fill="#11261F" stroke="#2BBFAE" stroke-opacity="0.4"/><text x="460" y="265">DATA-CLASS</text>
+          </g>
+          <text x="436" y="284" text-anchor="middle" fill="#8A97AD" font-size="9.5" font-family="'IBM Plex Mono',monospace">data-class policy (metadata)</text>
+
+          <line x1="436" y1="292" x2="436" y2="320" stroke="#46E6D2" stroke-width="2" marker-end="url(#arrowC)"/>
+          <text x="446" y="310" fill="#46E6D2" font-size="9.5" font-family="'IBM Plex Mono',monospace">PCC / PDR</text>
+
+          <rect x="306" y="322" width="260" height="118" rx="11" fill="#10182A" stroke="#2BBFAE" stroke-opacity="0.5"/>
+          <text x="436" y="342" text-anchor="middle" fill="#EAF0F6" font-size="12.5" font-weight="600">Data Division · UPF steering</text>
+          <text x="436" y="360" text-anchor="middle" fill="#9FE9DE" font-size="10" font-family="'IBM Plex Mono',monospace">PDR / FAR · UL CL breakout</text>
+          <g transform="translate(421,372)">
+            <rect x="0" y="6" width="28" height="20" rx="4" fill="#0C1322" stroke="#46E6D2" stroke-width="1.4"/>
+            <path d="M6 6 v-3 a8 8 0 0 1 16 0 v3" fill="none" stroke="#46E6D2" stroke-width="1.4"/>
+            <circle cx="14" cy="16" r="2.4" fill="#46E6D2"/>
+          </g>
+          <text x="436" y="420" text-anchor="middle" fill="#8A97AD" font-size="9.5" font-family="'IBM Plex Mono',monospace">payload never opened</text>
+        </g>
+        <text x="286" y="484" fill="#46E6D2" font-size="11" font-family="'IBM Plex Mono',monospace">Policy Data Classifier = policy control ⊕ data division (expanded)</text>
+
+        <g font-family="'IBM Plex Sans',sans-serif">
+          <path d="M650 346 l36 28 l-36 28 l-36 -28 z" fill="#10182A" stroke="#2BBFAE" stroke-opacity="0.5"/>
+          <text x="650" y="370" text-anchor="middle" fill="#EAF0F6" font-size="9.5" font-weight="600">DATA</text>
+          <text x="650" y="382" text-anchor="middle" fill="#EAF0F6" font-size="9.5" font-weight="600">ROUTER</text>
+          <line x1="566" y1="374" x2="610" y2="374" stroke="#6E7C96" stroke-width="2" marker-end="url(#arrowN)"/>
+        </g>
+
+        <g font-family="'IBM Plex Sans',sans-serif">
+          <rect x="722" y="158" width="458" height="248" rx="14" fill="#0F2622" stroke="#2BBFAE" stroke-opacity="0.7"/>
+          <rect x="716" y="262" width="10" height="24" rx="3" fill="#0A0E1A" stroke="#46E6D2" stroke-width="1.3"/>
+          <text x="951" y="182" text-anchor="middle" fill="#EAF0F6" font-size="13" font-weight="600">Local AI · inside perimeter</text>
+          <text x="951" y="199" text-anchor="middle" fill="#46E6D2" font-size="10" font-family="'IBM Plex Mono',monospace">ONE ROUTING API · TWO TARGETS · SENSITIVE STAYS LOCAL</text>
+
+          <rect x="744" y="212" width="414" height="80" rx="10" fill="#123028" stroke="#46E6D2" stroke-opacity="0.6"/>
+          <rect x="744" y="212" width="120" height="80" rx="10" fill="#163a30"/>
+          <text x="760" y="238" fill="#46E6D2" font-size="10" font-family="'IBM Plex Mono',monospace">FIRST-PARTY</text>
+          <text x="760" y="258" fill="#EAF0F6" font-size="13" font-weight="600">AI Platform</text>
+          <text x="760" y="276" fill="#EAF0F6" font-size="13" font-weight="600">— provided by us</text>
+          <text x="884" y="244" fill="#9FE9DE" font-size="11">Managed on-prem inference, operated by us.</text>
+          <text x="884" y="264" fill="#9FE9DE" font-size="11">Curated sovereign / open-weight models</text>
+          <text x="884" y="280" fill="#8A97AD" font-size="10.5" font-family="'IBM Plex Mono',monospace">EXAONE · HyperCLOVA X · open-weight</text>
+
+          <rect x="744" y="300" width="414" height="80" rx="10" fill="#10182A" stroke="#2BBFAE" stroke-opacity="0.5"/>
+          <rect x="744" y="300" width="120" height="80" rx="10" fill="#16223a"/>
+          <text x="760" y="326" fill="#E8A05A" font-size="10" font-family="'IBM Plex Mono',monospace">BRING YOUR OWN</text>
+          <text x="760" y="346" fill="#EAF0F6" font-size="13" font-weight="600">Your own AI</text>
+          <text x="760" y="364" fill="#EAF0F6" font-size="13" font-weight="600">— self-operated</text>
+          <text x="884" y="332" fill="#C7D0DE" font-size="11">Connect the internal LLM / AI you already run.</text>
+          <text x="884" y="352" fill="#C7D0DE" font-size="11">No model lock-in; keep your investment.</text>
+          <text x="884" y="368" fill="#8A97AD" font-size="10.5" font-family="'IBM Plex Mono',monospace">REST / gRPC · model endpoints · RAG</text>
+        </g>
+        <path d="M686 360 C 700 320, 700 280, 714 274" fill="none" stroke="url(#secure)" stroke-width="2.6"/>
+        <g transform="translate(708,268)"><rect x="0" y="0" width="11" height="12" rx="2" fill="#46E6D2"/><rect x="-5" y="2" width="5" height="3" fill="#46E6D2"/><rect x="-5" y="7" width="5" height="3" fill="#46E6D2"/></g>
+        <text x="690" y="318" fill="#46E6D2" font-size="9.5" font-family="'IBM Plex Mono',monospace">API</text>
+        <path d="M726 274 C 734 252, 736 252, 744 252" fill="none" stroke="#46E6D2" stroke-width="1.8" marker-end="url(#arrowC)"/>
+        <path d="M726 274 C 734 320, 736 340, 744 340" fill="none" stroke="#46E6D2" stroke-width="1.8" marker-end="url(#arrowC)"/>
+
+        <g font-family="'IBM Plex Sans',sans-serif">
+          <rect x="980" y="636" width="190" height="92" rx="12" fill="#241B10" stroke="#E8A05A" stroke-opacity="0.6"/>
+          <text x="1075" y="664" text-anchor="middle" fill="#EAF0F6" font-size="13.5" font-weight="600">Cloud AI</text>
+          <text x="1075" y="686" text-anchor="middle" fill="#E8A05A" font-size="11" font-family="'IBM Plex Mono',monospace">NON-SENSITIVE · ELIGIBLE</text>
+          <text x="1075" y="710" text-anchor="middle" fill="#D9B894" font-size="11">optional, by policy</text>
+        </g>
+        <path d="M664 392 C 800 470, 900 580, 980 672" fill="none" stroke="#E8A05A" stroke-width="2.6" marker-end="url(#arrowA)"/>
+        <text x="876" y="506" fill="#E8A05A" font-size="10.5" font-family="'IBM Plex Mono',monospace" transform="rotate(60 876 506)" opacity="0.85">crosses boundary →</text>
+
+        <text x="48" y="762" fill="#6E7C96" font-size="11.5" font-family="'IBM Plex Mono',monospace">policy control: extended PCF   ·   data division: UPF steering (PCC/PDR, UL CL)   ·   analytics: NWDAF / NEF   ·   no AI inside core NFs</text>
+      </svg>
+      <div class="figure-cap">
+        <span><span class="dot s"></span>Sensitive — provided or your own AI, on-prem</span>
+        <span><span class="dot c"></span>Non-sensitive — eligible for cloud</span>
+        <span class="mono">classifier = policy control ⊕ data division</span>
+      </div>
+    </div>
+
+    <div class="how">
+      <div class="step"><div class="n">→ 01</div><h4>Ingest</h4><p>Data enters from any access — 5G, Wi-Fi or wired. The platform governs the flow, not the radio.</p></div>
+      <div class="step"><div class="n">→ 02</div><h4>Classify (policy control)</h4><p>The extended PCF authors data-class policy from slice, DNN/APN, UE group and application ID — no payload read.</p></div>
+      <div class="step"><div class="n">→ 03</div><h4>Divide (data plane)</h4><p>UPF steering enforces the policy as PCC/PDR rules, breaking sensitive classes out locally.</p></div>
+      <div class="step"><div class="n">→ 04</div><h4>Serve</h4><p>Sensitive data goes to AI inside your perimeter — our platform or yours; the rest can use cloud.</p></div>
+    </div>
+  </section>
+
+  <section id="ai-options">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Run AI your way</h2></div>
+    <p class="sec-sub">Two ways to run inference behind the boundary, both reached through the same routing API —
+      so you can start with ours and move to yours, or mix them by data class.</p>
+
+    <div class="ai2">
+      <div class="aicard first">
+        <span class="tag">FIRST-PARTY · PROVIDED BY US</span>
+        <h3>Managed AI Platform</h3>
+        <p>An on-prem inference stack we package, deploy and maintain — the fastest path if you don't already run your own AI.</p>
+        <ul class="mini">
+          <li>Curated sovereign or open-weight models, served on-prem</li>
+          <li>Operated and updated by us, inside your perimeter</li>
+          <li>Tuned for regulated workloads and audit needs</li>
+          <li>One contract for core, routing and inference</li>
+        </ul>
+      </div>
+      <div class="aicard own">
+        <span class="tag">BRING YOUR OWN · SELF-OPERATED</span>
+        <h3>Your own AI</h3>
+        <p>Already running an internal LLM / AI platform? Connect it directly — the gateway routes classified data to it and keeps it local.</p>
+        <ul class="mini">
+          <li>Open REST / gRPC APIs to any internal model server</li>
+          <li>Keep your existing AI investment — no rip-and-replace</li>
+          <li>Endpoint registry maps each data class to a target</li>
+          <li>Self-hosted LLMs, RAG and vector stores all plug in</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="codecard">
+<span class="c"># sensitive class → AI inside the perimeter (ours or yours)</span><br>
+<span class="k">route</span> data_class: <span style="color:#EAF0F6">"phi.imaging"</span><br>
+&nbsp;&nbsp;match: { slice: S-NSSAI-3, dnn: <span style="color:#EAF0F6">clinical</span> }<br>
+&nbsp;&nbsp;target: <span class="k">local_ai</span> &nbsp; provider: <span style="color:#EAF0F6">managed</span> | <span style="color:#EAF0F6">self</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;endpoint: <span style="color:#EAF0F6">https://ai.local/v1/infer</span> &nbsp; protocol: grpc<br>
+&nbsp;&nbsp;leave_perimeter: <span style="color:#E8A05A">false</span><br>
+<br>
+<span class="c"># non-sensitive class may use cloud</span><br>
+<span class="k">route</span> data_class: <span style="color:#EAF0F6">"ops.reporting"</span> &nbsp; target: <span class="k">cloud_ai</span> &nbsp; leave_perimeter: <span style="color:#46E6D2">true</span>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Platform features</h2></div>
+    <p class="sec-sub">Built on a 5G core you own outright, with classification precise enough to enforce
+      data-residency rules — and disciplined enough never to inspect what's inside a packet.</p>
+
+    <div class="feat-grid">
+      <div class="feat-col">
+        <h3>Classifier = core expansion <span class="tag">data</span></h3>
+        <ul class="feat">
+          <li><b>Policy control (extended PCF)</b><span>Authors data-class policy from slice (S-NSSAI), DNN/APN, UE group and application ID — the decision brain.</span></li>
+          <li><b>Data division (UPF steering)</b><span>Enforces it as PCC/PDR rules with UL CL breakout on the data plane — the hands. No payload read.</span></li>
+          <li><b>Tunable, versioned policy</b><span>Refine data-class rules per site, slice or group; tighten residency without touching the access network.</span></li>
+          <li><b>No AI inside the NFs</b><span>Heavy ML stays in the NWDAF / analytics plane and feeds policy back — core stays standards-clean and upgrade-safe.</span></li>
+        </ul>
+      </div>
+
+      <div class="feat-col">
+        <h3>Two ways to run AI <span class="tag">provided or own</span></h3>
+        <ul class="feat">
+          <li><b>Managed AI platform (ours)</b><span>On-prem inference we package and operate, with curated sovereign or open-weight models.</span></li>
+          <li><b>Bring your own AI</b><span>Connect the internal LLM / AI you already run over open REST / gRPC APIs.</span></li>
+          <li><b>One routing API, two targets</b><span>Switch or mix providers by data class; sensitive flows stay inside the perimeter either way.</span></li>
+        </ul>
+      </div>
+
+      <div class="feat-col">
+        <h3>Sovereign control &amp; governance <span class="tag">perimeter</span></h3>
+        <ul class="feat">
+          <li><b>You own the core</b><span>open5gsEnt runs on your hardware in your perimeter — no third-party cloud core in the data path.</span></li>
+          <li><b>Policy-based data governance</b><span>Residency and access rules are enforced in the network itself, not left to application discipline.</span></li>
+          <li><b>Compliance evidence by design</b><span>Routing and inference access are logged as a by-product — usable for EU AI Act, HIPAA and data-residency review.</span></li>
+        </ul>
+      </div>
+
+      <div class="feat-col">
+        <h3>Access-independent &amp; flexible <span class="tag">routing</span></h3>
+        <ul class="feat">
+          <li><b>Independent of RAN &amp; interface</b><span>Governs data the same way over 5G, Wi-Fi or wired — no dependency on a specific radio.</span></li>
+          <li><b>On-prem, cloud or hybrid</b><span>Each data class routes to local AI, cloud AI, or both — by policy, changeable without re-architecting.</span></li>
+          <li><b>Local breakout</b><span>Accelerated data plane keeps latency low for real-time inference at the edge.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="use-cases">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Use cases</h2></div>
+    <p class="sec-sub">Wherever a regulator, a contract or a board says certain data cannot leave the premises —
+      the platform makes that boundary enforceable, and sends that data to AI you control.</p>
+
+    <div class="uc-grid">
+      <div class="uc"><div class="ico">🏭</div><h4>Manufacturing &amp; fabs</h4>
+        <p>Process data, recipes and machine-vision inference stay on the line, handled by on-prem AI.</p>
+        <div class="split"><span class="keep">↳ local AI: CV quality, OT, IP</span><span class="out">↳ cloud: anonymized KPIs</span></div></div>
+      <div class="uc"><div class="ico">🏥</div><h4>Healthcare</h4>
+        <p>Patient-data inference runs on AI inside the hospital boundary; non-clinical work can use cloud.</p>
+        <div class="split"><span class="keep">↳ local AI: PHI, imaging</span><span class="out">↳ cloud: scheduling</span></div></div>
+      <div class="uc"><div class="ico">🛡</div><h4>Defense &amp; public sector</h4>
+        <p>Controlled data is rule-blocked from crossing the perimeter and processed only by on-prem AI.</p>
+        <div class="split"><span class="keep">↳ local AI: controlled data</span><span class="out">↳ cloud: open / admin</span></div></div>
+      <div class="uc"><div class="ico">⚡</div><h4>Utilities &amp; critical infra</h4>
+        <p>OT data stays isolated on-site; AI runs diagnostics locally so operational data never transits a public network.</p>
+        <div class="split"><span class="keep">↳ local AI: SCADA / OT</span><span class="out">↳ cloud: reporting</span></div></div>
+      <div class="uc"><div class="ico">🏦</div><h4>Finance &amp; insurance</h4>
+        <p>Inference over customer and transaction data stays in-region on local AI for GDPR and model governance.</p>
+        <div class="split"><span class="keep">↳ local AI: txn / customer</span><span class="out">↳ cloud: general tooling</span></div></div>
+      <div class="uc"><div class="ico">🔬</div><h4>Semiconductor &amp; R&amp;D</h4>
+        <p>Designs, yields and lab data never leave the campus; on-prem AI does the work behind the boundary.</p>
+        <div class="split"><span class="keep">↳ local AI: design, yield</span><span class="out">↳ cloud: collaboration</span></div></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="close">
+      <div class="eyebrow" style="justify-content:center">Sovereign Data Platform</div>
+      <h2>Run AI where your data has to stay.</h2>
+      <p>A 5G core you control, a classifier that extends its own policy and data-division functions,
+        and AI inside your perimeter — ours or your own.</p>
+      <a class="btn" href="#">Request a briefing</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">open5gsEnt · Sovereign Data Platform — classified by policy, never by payload. Classifier extends core PCF + UPF steering; sensitive data served by provided or self-operated AI inside your perimeter.</div>
+</footer>
+
+</body>
+</html>

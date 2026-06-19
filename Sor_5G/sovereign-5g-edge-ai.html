@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sovereign 5G — Private Core + Edge AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1C28;
+    --ink-2:#16293A;
+    --paper:#E9ECEA;
+    --card:#F4F6F3;
+    --signal:#1FD1BE;
+    --signal-deep:#0B8C7E;
+    --amber:#E0A33C;
+    --muted:#54656F;
+    --line:#CBD2CE;
+    /* figure-scoped */
+    --line-fig:rgba(125,165,172,.30);
+    --paper-70:rgba(233,236,234,.84);
+    --muted-fig:rgba(180,200,205,.58);
+    --signal-30:rgba(31,209,190,.32);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--signal-deep);
+    margin:0 0 18px;display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--signal-deep);display:inline-block}
+  h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;line-height:1.05;margin:0}
+  p{margin:0}
+
+  /* hero */
+  .hero{padding:88px 0 56px}
+  .hero h1{font-size:clamp(40px,6.2vw,76px);letter-spacing:-.02em;max-width:14ch}
+  .hero h1 em{font-style:normal;color:var(--signal-deep)}
+  .hero .lede{margin-top:26px;max-width:60ch;font-size:clamp(17px,1.5vw,19px);color:#2C3A43}
+  .meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
+  .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;
+    color:#34454E;background:var(--card);border:1px solid var(--line);
+    padding:7px 12px;border-radius:999px;
+  }
+  .reveal{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+  .reveal.d1{animation-delay:.06s}.reveal.d2{animation-delay:.14s}.reveal.d3{animation-delay:.22s}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  /* generic section */
+  section{padding:64px 0}
+  .lead-2{margin-top:14px;max-width:62ch;color:#2C3A43;font-size:17px}
+
+  /* premise grid */
+  .premise h2{font-size:clamp(26px,3.2vw,38px);letter-spacing:-.01em;max-width:18ch}
+  .grid4{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .pt{border-top:2px solid var(--signal);padding-top:16px}
+  .pt .k{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal-deep)}
+  .pt h3{font-size:18px;margin:8px 0 6px;letter-spacing:-.01em}
+  .pt p{font-size:14.5px;color:var(--muted)}
+
+  /* figure panel */
+  .figwrap{background:var(--ink);border-radius:22px;padding:30px clamp(16px,3vw,34px) 26px;color:var(--paper)}
+  .figwrap .cap{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin:0 0 4px}
+  .figwrap h2{color:var(--paper);font-size:clamp(22px,2.7vw,30px);letter-spacing:-.01em;max-width:24ch}
+  .figscroll{margin-top:24px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .figscroll svg{display:block;width:100%;min-width:760px;height:auto}
+  .figfoot{margin-top:20px;max-width:80ch;font-size:14.5px;color:rgba(233,236,234,.72)}
+  .figfoot strong{color:var(--paper);font-weight:600}
+
+  /* products */
+  .prod h2{font-size:clamp(26px,3.4vw,40px);letter-spacing:-.01em}
+  .cards{margin-top:42px;display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:28px 28px 30px;border-top:3px solid var(--signal);
+    display:flex;flex-direction:column;
+  }
+  .card .idx{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.12em;color:var(--signal-deep);text-transform:uppercase}
+  .card h3{font-size:24px;letter-spacing:-.01em;margin:10px 0 0}
+  .card .intro{margin-top:12px;color:#33424B;font-size:15.5px}
+  .card .sub{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:24px 0 10px}
+  .card ul{margin:0;padding:0;list-style:none}
+  .card li{position:relative;padding-left:20px;margin:9px 0;font-size:14.5px;color:#2A3941}
+  .feat li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:2px;background:var(--signal)}
+  .uses li::before{content:"›";position:absolute;left:2px;top:-1px;color:var(--signal-deep);font-weight:700}
+  .card .uses{margin-top:auto}
+
+  /* closing */
+  .close{background:var(--ink);border-radius:22px;padding:clamp(40px,5vw,64px);color:var(--paper);text-align:center}
+  .close h2{color:var(--paper);font-size:clamp(28px,3.6vw,44px);letter-spacing:-.02em;max-width:20ch;margin:0 auto}
+  .close p{margin:22px auto 0;max-width:64ch;color:rgba(233,236,234,.74);font-size:16.5px}
+  .cta{margin-top:34px;display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .btn{
+    font-family:"Inter",sans-serif;font-weight:600;font-size:15px;text-decoration:none;
+    padding:14px 26px;border-radius:999px;transition:transform .15s ease,background .15s ease;
+  }
+  .btn.primary{background:var(--signal);color:var(--ink)}
+  .btn.ghost{border:1px solid rgba(233,236,234,.34);color:var(--paper)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.primary:hover{background:#37e0cd}
+
+  .note{padding:36px 0 70px;color:var(--muted);font-size:13px;font-family:"IBM Plex Mono",monospace;letter-spacing:.02em;max-width:80ch}
+
+  /* perimeter motion */
+  .perim{animation:march 16s linear infinite}
+  @keyframes march{to{stroke-dashoffset:-510}}
+
+  @media (max-width:900px){
+    .grid4{grid-template-columns:repeat(2,1fr)}
+    .cards{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 20px}
+    .grid4{grid-template-columns:1fr}
+    .hero{padding:64px 0 44px}
+    .card{padding:24px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{animation:none;opacity:1;transform:none}
+    .perim{animation:none}
+    .btn:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow reveal">New · Sovereign 5G + Edge AI</p>
+    <h1 class="reveal d1">Own the core.<br>Keep the data <em>inside.</em></h1>
+    <p class="lede reveal d2">A private 5G core you control end to end, with AI that runs inside your perimeter. Connectivity, operations intelligence, and camera analytics all stay on your premises — so regulated and security-critical sites get modern AI without sending sensitive data anywhere.</p>
+    <div class="meta reveal d3">
+      <span class="tag">On-premises</span>
+      <span class="tag">Air-gap capable</span>
+      <span class="tag">Policy-gated egress</span>
+      <span class="tag">You hold the keys</span>
+    </div>
+  </div>
+</header>
+
+<!-- PREMISE -->
+<section class="premise">
+  <div class="wrap">
+    <p class="eyebrow">Why full control of the core</p>
+    <h2>Security is an architecture, not a setting.</h2>
+    <p class="lead-2">Most private 5G is stitched together from vendors who each touch your traffic, or it's backhauled to a public cloud — either way, your data leaves your control. We build on a hardened open-source core and layer our own customized AI and orchestration software on top, so no proprietary vendor sits in your signaling or data path, and nothing sensitive has to leave the building.</p>
+    <div class="grid4">
+      <div class="pt">
+        <div class="k">01 / One owner</div>
+        <h3>No black box in the path</h3>
+        <p>You see and govern every network function. No opaque vendor sits in your control or data plane.</p>
+      </div>
+      <div class="pt">
+        <div class="k">02 / On-prem</div>
+        <h3>Processed at the edge</h3>
+        <p>Operations AI, analytics, and video are handled on-site, inside your boundary — not in someone else's cloud.</p>
+      </div>
+      <div class="pt">
+        <div class="k">03 / Air-gap</div>
+        <h3>Runs fully disconnected</h3>
+        <p>The entire stack — core, inference, vision — operates offline for your most sensitive sites.</p>
+      </div>
+      <div class="pt">
+        <div class="k">04 / Egress</div>
+        <h3>One controlled door out</h3>
+        <p>A single policy gate governs the perimeter. Only metadata you approve ever crosses it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIGURE -->
+<section>
+  <div class="wrap">
+    <div class="figwrap">
+      <p class="cap">How it fits together</p>
+      <h2>One perimeter. Four products. Nothing sensitive crosses the line.</h2>
+      <div class="figscroll">
+        <svg viewBox="0 0 1160 700" role="img" aria-label="Architecture diagram: a private 5G core, NetOps AI, edge vision, and AI gateway running inside an on-premises security perimeter, deployed per site across regulated industries.">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0L10 5L0 10z" fill="var(--signal)"/>
+            </marker>
+            <marker id="arrA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0L10 5L0 10z" fill="var(--amber)"/>
+            </marker>
+          </defs>
+          <style>
+            .lab{font-family:"IBM Plex Mono",monospace;fill:var(--paper-70);font-size:12px;letter-spacing:.03em}
+            .labs{font-family:"IBM Plex Mono",monospace;fill:var(--muted-fig);font-size:10.5px;letter-spacing:.02em}
+            .ttl{font-family:"Bricolage Grotesque",sans-serif;fill:var(--paper);font-weight:700}
+            .zone{fill:rgba(255,255,255,.018);stroke:var(--line-fig);stroke-width:1}
+            .core{fill:var(--ink-2);stroke:var(--signal);stroke-width:1.4}
+            .pill{fill:var(--ink);stroke:var(--signal-30);stroke-width:1}
+            .flow{fill:none;stroke:var(--signal);stroke-width:1.6;marker-end:url(#arr)}
+            .flowd{stroke-dasharray:4 4}
+            .am{stroke:var(--amber)}
+          </style>
+
+          <!-- top strip -->
+          <text x="36" y="42" class="lab" fill="var(--signal)">SOVEREIGN 5G — PRIVATE CORE + EDGE AI</text>
+          <text x="1124" y="42" class="labs" text-anchor="end">ONE PLATFORM · DEPLOYED PER SITE</text>
+
+          <!-- perimeter -->
+          <rect class="perim" x="36" y="78" width="1048" height="502" rx="20" fill="none" stroke="var(--signal)" stroke-width="2" stroke-dasharray="10 7"/>
+          <!-- corner ticks -->
+          <g stroke="var(--signal)" stroke-width="2" fill="none">
+            <path d="M36 100V92H52"/><path d="M1068 92h16v8"/>
+            <path d="M36 558v8h16"/><path d="M1068 566h16v-8"/>
+          </g>
+          <!-- perimeter label chip -->
+          <rect x="54" y="65" width="318" height="26" rx="6" fill="var(--ink)" stroke="var(--signal)" stroke-width="1"/>
+          <rect x="66" y="72" width="9" height="7" rx="1" fill="none" stroke="var(--signal)" stroke-width="1.4"/>
+          <path d="M68 72v-2a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="var(--signal)" stroke-width="1.4"/>
+          <text x="84" y="82" class="lab" fill="var(--signal)">ON-PREMISES SECURITY PERIMETER</text>
+
+          <!-- LEFT: devices -->
+          <text x="64" y="128" class="labs">DEVICES</text>
+          <g>
+            <rect class="zone" x="64" y="150" width="178" height="34" rx="8"/><text x="80" y="171" class="lab">Cameras&#160;&#160;▸ UE</text>
+            <rect class="zone" x="64" y="196" width="178" height="34" rx="8"/><text x="80" y="217" class="lab">Sensors&#160;&#160;&#160;▸ UE</text>
+            <rect class="zone" x="64" y="242" width="178" height="34" rx="8"/><text x="80" y="263" class="lab">Devices&#160;&#160;&#160;▸ UE</text>
+          </g>
+          <text x="64" y="300" class="labs">5G-AKA authenticated</text>
+          <text x="64" y="315" class="labs">on-site identities, your keys</text>
+          <!-- arrows into core -->
+          <path class="flow" d="M242 167H296"/>
+          <path class="flow" d="M242 213H296"/>
+          <path class="flow" d="M242 259H296"/>
+
+          <!-- CENTER: core -->
+          <rect class="core" x="300" y="132" width="300" height="320" rx="14"/>
+          <text x="316" y="162" class="ttl" font-size="16">Sovereign 5G Core</text>
+          <text x="316" y="180" class="labs">You control every NF · keys held on site</text>
+          <text x="316" y="208" class="labs">CONTROL PLANE</text>
+          <g>
+            <rect class="pill" x="316" y="216" width="84" height="26" rx="6"/><text x="358" y="233" class="lab" text-anchor="middle">AMF</text>
+            <rect class="pill" x="408" y="216" width="84" height="26" rx="6"/><text x="450" y="233" class="lab" text-anchor="middle">SMF</text>
+            <rect class="pill" x="500" y="216" width="84" height="26" rx="6"/><text x="542" y="233" class="lab" text-anchor="middle">PCF</text>
+            <rect class="pill" x="316" y="248" width="84" height="26" rx="6"/><text x="358" y="265" class="lab" text-anchor="middle">NRF</text>
+            <rect class="pill" x="408" y="248" width="84" height="26" rx="6"/><text x="450" y="265" class="lab" text-anchor="middle">NWDAF</text>
+            <rect class="pill" x="500" y="248" width="84" height="26" rx="6"/><text x="542" y="265" class="lab" text-anchor="middle">NEF</text>
+          </g>
+          <text x="316" y="302" class="labs">USER PLANE</text>
+          <rect x="316" y="310" width="268" height="44" rx="8" fill="rgba(31,209,190,.10)" stroke="var(--signal)" stroke-width="1.4"/>
+          <text x="450" y="337" class="lab" fill="var(--paper)" text-anchor="middle">UPF + UL CL · local breakout</text>
+          <text x="316" y="378" class="labs">user traffic stays on site — accelerated (eUPF/DPDK)</text>
+
+          <!-- RIGHT A: NetOps AI / mgmt plane -->
+          <rect class="zone" x="640" y="132" width="424" height="118" rx="12"/>
+          <text x="656" y="154" class="labs">MANAGEMENT / ANALYTICS PLANE</text>
+          <text x="656" y="178" class="ttl" font-size="15">NetOps AI</text>
+          <text x="656" y="200" class="labs">Root-cause analysis, grounded &amp; cited</text>
+          <text x="656" y="216" class="labs">Generates &amp; validates core config</text>
+          <text x="656" y="232" class="labs">Closed-loop — human-approved actions</text>
+          <path class="flow flowd" d="M600 200H636"/>
+
+          <!-- RIGHT B: MEC edge -->
+          <rect class="zone" x="640" y="266" width="424" height="150" rx="12"/>
+          <text x="656" y="288" class="labs">MEC EDGE — ON-SITE COMPUTE</text>
+          <rect class="pill" x="656" y="300" width="196" height="104" rx="8"/>
+          <text x="668" y="322" class="ttl" font-size="14">Edge Vision</text>
+          <text x="668" y="342" class="labs">CV + vision-language models</text>
+          <text x="668" y="359" class="labs">person / zone / intrusion</text>
+          <text x="668" y="376" class="labs">NL alerts + footage search</text>
+          <text x="668" y="395" class="labs">fed by UL CL local breakout</text>
+          <rect class="pill" x="860" y="300" width="190" height="104" rx="8"/>
+          <text x="872" y="322" class="ttl" font-size="14">On-prem LLM</text>
+          <text x="872" y="342" class="labs">inference inside perimeter</text>
+          <text x="872" y="359" class="labs">RAG on your own data</text>
+          <text x="872" y="376" class="labs">air-gap capable</text>
+          <!-- core UPF -> MEC, and NEF return -->
+          <path class="flow" d="M584 330H636"/>
+          <path class="flow flowd" d="M636 388C612 388 596 300 544 274" />
+          <text x="612" y="430" class="labs">↩ network reacts via NEF control loop</text>
+
+          <!-- containment statement -->
+          <rect x="316" y="486" width="4" height="64" rx="2" fill="var(--signal)"/>
+          <text x="332" y="510" class="ttl" font-size="17">Raw video + subscriber data</text>
+          <text x="332" y="534" class="ttl" font-size="17">never cross this perimeter.</text>
+
+          <!-- AI GATEWAY (egress door) -->
+          <rect class="zone am" x="700" y="452" width="364" height="96" rx="12" stroke-width="1.6"/>
+          <text x="716" y="474" class="labs" fill="var(--amber)">EGRESS CONTROL</text>
+          <text x="716" y="498" class="ttl" font-size="15">AI Gateway</text>
+          <text x="716" y="518" class="labs">routes AI requests by data class &amp; policy</text>
+          <text x="716" y="534" class="labs">sensitive data stays in · approved metadata out</text>
+
+          <!-- single egress channel crossing perimeter -->
+          <path d="M1064 500H1090" stroke="var(--amber)" stroke-width="6" stroke-linecap="round" opacity="0.28"/>
+          <path d="M1064 500H1090" stroke="var(--amber)" stroke-width="1.8" fill="none" marker-end="url(#arrA)"/>
+          <path d="M1084 492v16" stroke="var(--amber)" stroke-width="1.4"/>
+          <rect x="1096" y="480" width="58" height="40" rx="8" fill="var(--ink)" stroke="var(--muted-fig)" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="1125" y="498" class="lab" text-anchor="middle">Cloud</text>
+          <text x="1125" y="513" class="labs" text-anchor="middle">optional</text>
+          <text x="1054" y="472" class="labs" fill="var(--amber)" text-anchor="end">approved metadata only →</text>
+
+          <!-- USE CASES -->
+          <text x="36" y="620" class="labs" fill="var(--signal)">ONE PLATFORM · DEPLOYED PER SITE</text>
+          <g font-family="IBM Plex Mono">
+            <rect class="zone" x="36" y="634" width="186" height="40" rx="9"/><circle cx="54" cy="654" r="4" fill="var(--signal)"/><text x="68" y="659" class="lab">Semiconductor fab</text>
+            <rect class="zone" x="236" y="634" width="134" height="40" rx="9"/><circle cx="254" cy="654" r="4" fill="var(--signal)"/><text x="268" y="659" class="lab">Hospital</text>
+            <rect class="zone" x="384" y="634" width="150" height="40" rx="9"/><circle cx="402" cy="654" r="4" fill="var(--signal)"/><text x="416" y="659" class="lab">Defense site</text>
+            <rect class="zone" x="548" y="634" width="196" height="40" rx="9"/><circle cx="566" cy="654" r="4" fill="var(--signal)"/><text x="580" y="659" class="lab">Manufacturing line</text>
+            <rect class="zone" x="758" y="634" width="196" height="40" rx="9"/><circle cx="776" cy="654" r="4" fill="var(--signal)"/><text x="790" y="659" class="lab">Transportation hub</text>
+          </g>
+        </svg>
+      </div>
+      <p class="figfoot">The core steers and protects traffic; AI runs at the edge and in the management plane. <strong>The 5G core routes camera streams but never inspects their contents</strong> — video is decrypted and analyzed only at the on-site edge. Raw footage and subscriber data stay inside the perimeter, and only policy-approved metadata reaches the cloud, and only if you allow it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="prod">
+  <div class="wrap">
+    <p class="eyebrow">The products</p>
+    <h2>Four products on one sovereign platform.</h2>
+    <div class="cards">
+
+      <!-- 1 -->
+      <article class="card">
+        <span class="idx">Product 01 · Foundation</span>
+        <h3>Sovereign 5G Core</h3>
+        <p class="intro">A converged private 4G/5G core built on a hardened open-source foundation that you run and control end to end — engineered for sites where data sovereignty is the requirement, not a feature.</p>
+        <p class="sub">Features</p>
+        <ul class="feat">
+          <li>Built on a hardened open-source core you can audit end to end — transparency that closed, black-box stacks can't offer</li>
+          <li>Full control of every network function — no vendor locked into your control or data path</li>
+          <li>Runs on-premises or fully air-gapped; you hold the keys and the subscriber identities</li>
+          <li>Accelerated user plane with local breakout — traffic stays on site, never backhauled</li>
+          <li>Per-tenant network slicing with isolated QoS and security domains</li>
+          <li>Cameras, sensors, and devices authenticated as managed devices on your network</li>
+        </ul>
+        <div class="uses">
+          <p class="sub">Use cases</p>
+          <ul>
+            <li>Semiconductor fabs and production lines that can't export process data</li>
+            <li>Hospitals operating under strict patient-data regulation</li>
+            <li>Defense and government sites that need a self-contained network</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="card">
+        <span class="idx">Product 02 · Operations</span>
+        <h3>NetOps AI</h3>
+        <p class="intro">An AI operations assistant that lives inside your core — it diagnoses faults, explains them against the 3GPP standard, and proposes fixes, without sending a single log off site.</p>
+        <p class="sub">Features</p>
+        <ul class="feat">
+          <li>Root-cause analysis grounded in your own logs, traces, and metrics — every answer cited, never guessed</li>
+          <li>Plain-language explanations of signaling failures tied to the exact standard procedure</li>
+          <li>Generates and validates core configuration against 3GPP specifications</li>
+          <li>Closed-loop automation with human approval, staged rollout, and automatic rollback</li>
+          <li>Runs on-premises or air-gapped — your operational data never leaves the building</li>
+        </ul>
+        <div class="uses">
+          <p class="sub">Use cases</p>
+          <ul>
+            <li>Lean teams running private networks without a 24/7 operations center</li>
+            <li>Integrators and managed-service providers running many sites from one console</li>
+            <li>Regulated operators that can't use cloud-hosted AI ops tools</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="card">
+        <span class="idx">Product 03 · Vision</span>
+        <h3>Sovereign Edge Vision</h3>
+        <p class="intro">Camera intelligence — intrusion and anomaly detection — processed at the edge over your private 5G. The video never leaves the premises, and the core never sees its contents.</p>
+        <p class="sub">Features</p>
+        <ul class="feat">
+          <li>Person, intrusion, and zone-violation detection at the on-site edge using modern vision models</li>
+          <li>Natural-language alerts and footage search — “person in a restricted zone after hours”</li>
+          <li>Video steered to the on-site edge — never backhauled, never sent to a cloud</li>
+          <li>The core routes and prioritizes streams but never inspects content — privacy by architecture</li>
+          <li>The network reacts to detections automatically — prioritizing the stream that just saw motion</li>
+        </ul>
+        <div class="uses">
+          <p class="sub">Use cases</p>
+          <ul>
+            <li>Perimeter and restricted-zone monitoring at fabs, depots, and critical infrastructure</li>
+            <li>After-hours intrusion detection across multi-building campuses</li>
+            <li>Retail and franchise chains needing private-wireless cameras under central control</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="card">
+        <span class="idx">Product 04 · Governance</span>
+        <h3>Policy-Driven AI Gateway</h3>
+        <p class="intro">A control point that decides where every AI request runs — on-premises or cloud — based on how sensitive the data is. Regulated data stays inside; only what's permitted goes out.</p>
+        <p class="sub">Features</p>
+        <ul class="feat">
+          <li>Routes AI and inference requests by data classification, slice, and tenant policy</li>
+          <li>Keeps sensitive prompts and data on-premises; bursts only non-sensitive work to the cloud</li>
+          <li>Metadata-driven steering that works on encrypted traffic — no payload inspection required</li>
+          <li>Central policy with a full audit trail of what crossed the perimeter, and why</li>
+          <li>A single egress gate you control — the only door out of the sovereign boundary</li>
+        </ul>
+        <div class="uses">
+          <p class="sub">Use cases</p>
+          <ul>
+            <li>Regulated industries adopting AI under data-residency and AI-governance rules</li>
+            <li>Mixed workloads where some data can use cloud AI and some legally cannot</li>
+            <li>Multi-tenant sites needing per-tenant AI data-handling policies</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section>
+  <div class="wrap">
+    <div class="close">
+      <h2>Built for sites that can't afford to leak.</h2>
+      <p>Built on a hardened, open-source 5G core, with our own customized AI and orchestration software layered on top — the auditability of open-source connectivity, plus an intelligence plane tailored to your environment. Radio, cameras, and sensors come from our certified hardware partners; deploy one site or a hundred from a single console, with the perimeter intact at every one.</p>
+      <div class="cta">
+        <a class="btn primary" href="#">Become a design partner</a>
+        <a class="btn ghost" href="#">Request a technical briefing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <p class="note">// Product names are working titles — swap in your own. Figure is illustrative of the reference architecture, not a deployment topology. Available as a Korean-language version on request.</p>
+</div>
+
+</body>
+</html>
